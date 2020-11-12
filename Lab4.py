@@ -5,7 +5,7 @@ def get_forms(sentence):
     return sentence.split()
 
 
-def count_forms(words):
+def count_forms(words): # funkcja mało uniwersalna - jak dostanie listę nieposortowaną, to da błędny wynik
     forms_amount = {}
     last_word = words[0]
     current_word_amount = 0
@@ -27,7 +27,7 @@ def get_digrams(words):
         digrams.append(words[i:(i+2)])
     return digrams
 
-def get_trigrams(words):
+def get_trigrams(words):    # DRY
     trigrams=[]
     for i in range(len(words) - 2):
         trigrams.append(words[i:(i + 3)])
@@ -43,7 +43,7 @@ def generate_forms(path):
 
 
 def generate_forms_from_txt(path):
-    with open(path,'rb') as infile:
+    with open(path,'rb') as infile: # czemu 'rb'?
         for line in infile:
             for current_form in get_forms(line):
                 yield clean_polish(current_form)
@@ -55,8 +55,8 @@ def clean_polish(word):
 
     return word
 
-def sort_insertion(A):
-    for j in range(1,len(A),1):
+def sort_insertion(A):  # odradzam nazwy jednoliterowe oraz wielkie litery w nazwach zmiennych
+    for j in range(1,len(A),1): # trzeci element range'a lepiej pomijać, jeśli wynosi 1
         key=A[j]
         i=j-1
         while i>=0 and A[i]>key:
@@ -66,7 +66,7 @@ def sort_insertion(A):
     return A
 
 
-def find_minimum_index(A,start_position):
+def find_minimum_index(A,start_position):   # w matematyce się to nazywa argmin
     minimum_index=start_position
     for i in range(start_position,len(A),1):
         if A[i]<A[minimum_index]:
@@ -79,19 +79,20 @@ def sort_selection(A):
         A[current_index],A[minimum_index]=A[minimum_index],A[current_index]
     return A
 
-def print_first_n_from_dict(working_dict,n):
+def print_first_n_from_dict(working_dict,n):    # ta funkcja źle działa - raz wypisuje za mało, raz za dużo
     last_value=""
     counter=0
     for key in working_dict:
         if counter>n and last_value==key:
             print(key+"-"+str(working_dict[key]))
             last_value=key
-            counter=counter+1
+            counter=counter+1   # += 1
         else:
             if counter<=n:
                 print(key + "-" + str(working_dict[key]))
                 last_value = key
                 counter = counter + 1
+            # jak counter > n i last_value != key, to Pan i tak iteruje do końca i sprawdza ten warunek, prawda?
 
 
 if __name__ == "__main__":
@@ -108,8 +109,8 @@ if __name__ == "__main__":
     forms=[]
     path = "potop.txt"
     for mg in generate_forms_from_txt(path):
-       forms.append(str(mg))
-
+       forms.append(str(mg))    # czemu str? co normalnie Pan dostaje?
+                                # zostają Panu znaki nowej linii jako słowa
     #zad4 https://stackoverflow.com/questions/613183/how-do-i-sort-a-dictionary-by-value used for sorting dict by value
     digrams=get_digrams(forms)
     digrams.sort()
