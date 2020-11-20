@@ -11,7 +11,7 @@ def calculate_GCD(nr1, nr2):
 if __name__ == "__main__":
     print("Enter two integer numbers:")
     print("Number 1: ")
-    nr1=int(input())
+    nr1=int(input())    # a jak wpiszę "kopytko"?
     print("Number 2: ")
     nr2=int(input())
     GCD=calculate_GCD(nr1,nr2)

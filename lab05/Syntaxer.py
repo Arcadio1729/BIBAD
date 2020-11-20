@@ -1,7 +1,7 @@
 import string
-latin_variables=string.ascii_lowercase
+latin_variables=string.ascii_lowercase  # po prostu variables
 constants="01"
-operators="|&~()"
+operators="|&~()"   # nawias to nie operator + nie używa Pan tej zmiennej
 
 def check_sequence(sequence):
     sequence=sequence.replace(" ","")
@@ -11,7 +11,7 @@ def check_sequence(sequence):
         if current_state=="variable_state":
             if s in latin_variables or s in constants:
                 current_state="operator_state"
-                continue
+                continue    # odradzam używanie continue, w tym przypadku lepiej użyć elif'a i else'a
             if s=="~":
                 current_state="variable_state"
                 continue
@@ -35,7 +35,7 @@ def check_sequence(sequence):
 
 
 if __name__ == "__main__":
-    true_sequences_test = ["a", "a|b", "a & b | a", "(a &b) |c&~d", "~~a", "~(a|c)", "(a)"]
+    true_sequences_test = ["a", "a|b", "a & b | a", "(a &b) |c&~d", "~~a", "~(a|c)", "(a)"] # raczej correct niż true
     false_sequences_test = ["~", "a|", "A|B", "a|&b", "b~", "(a|b", "a|b)"]
 
     for t in true_sequences_test:
