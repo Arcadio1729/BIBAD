@@ -11,7 +11,7 @@ class Circle(Shape):
         except ValueError as ve:
             raise ve
 
-    def scale(self, ratio):
+    def scale(self, ratio): # a scale się nie da umieścić w Shape?
         self.radius = float(ratio) * self.radius
 
     def draw(self):

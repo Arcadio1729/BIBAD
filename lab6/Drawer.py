@@ -97,7 +97,7 @@ class Drawer:
                             except Exception as e:
                                 print(str(e))
                         else:
-                            raise ValueError("Wrong Figure Type.")
+                            raise ValueError("Wrong Figure Type.")  # czytelniej by było najpierw rzucić wyjątki, a później robić resztę - nie robi się takie wcięcie
                     else:
                         raise ValueError("Name " + figure_name + " already taken.")
                 else:

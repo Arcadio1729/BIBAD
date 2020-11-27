@@ -1,16 +1,17 @@
+# nazwy plików raczej snake_case
 from Vector import Vector
 
 class Shape:
     def __init__(self,figure_name):
         try:
-            self.colors = ["black", "white", "red", "green", "blue", "cyan", "magneta", "yellow"]
+            self.colors = ["black", "white", "red", "green", "blue", "cyan", "magneta", "yellow"]   # czy każda figura potrzebuje swojej listy kolorów?
             self.figure_name = str(figure_name)
             self.middle_point = Vector(0, 0)
             self.rotation = 0
             self.background_color="white"
             self.border_color="black"
-        except ValueError as ve:
-            raise ve
+        except ValueError as ve:    # co tu może rzucić ValueError?
+            raise ve    # po co Pan łapie wyjątek, jeśli go Pan od razu rzuca dalej?
 
     def draw(self):
         pass
@@ -46,5 +47,5 @@ class Shape:
         except ValueError as ve:
             raise ve
 
-    def display(self):
+    def display(self):  # na takie okazje się świetnie nadaje __str__
         print(self.figure_name+"\nbackground-color: "+self.background_color+"\nborder-color: "+self.border_color+"\nrotation: "+str(self.rotation)+"\nmiddle: "+str(self.middle_point))

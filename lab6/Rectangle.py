@@ -6,7 +6,7 @@ class Rectangle(Shape):
 
     def __init__(self,figure_name,side_a,side_b):
         super().__init__(figure_name)
-        self.side_a=float(side_a)
+        self.side_a=float(side_a)   # bok może być ujemny?
         self.side_b=float(side_b)
 
     def scale(self,ratio):
@@ -14,7 +14,7 @@ class Rectangle(Shape):
             self.side_a=ratio*self.side_a
             self.side_b=ratio*self.side_b
         except ValueError:
-            raise ValueError("Invalid angle input. Ratio should be numeric format.")
+            raise ValueError("Invalid angle input. Ratio should be numeric format.")    # angle?
 
     def draw(self):
         print("RECTANGLE")

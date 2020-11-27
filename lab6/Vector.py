@@ -13,12 +13,12 @@ class Vector:
         new_y = self.y - other.y
         return Vector(new_x, new_y)
 
-    def __mul__(self, k):
+    def __mul__(self, k): # jeszcze rmul by się przydało do kompletu
         new_x = (self.x) * k
         new_y = (self.y) * k
         return Vector(new_x, new_y)
 
-    def __floordiv__(self, k):
+    def __floordiv__(self, k):  # czemu floordiv, a nie div?
         new_x = self.x / k
         new_y = self.y / k
         return Vector(new_x, new_y)
@@ -27,7 +27,7 @@ class Vector:
         return "(" + str(round(self.x, 2)) + "," + str(round(self.y, 2)) + ")"
 
     def rotate(self, angle):
-        cos_angle = float(math.cos(angle))
+        cos_angle = float(math.cos(angle))  # NameError
         sin_angle = float(math.sin(angle))
 
         new_x = (self.x) * cos_angle - (self.y) * sin_angle
