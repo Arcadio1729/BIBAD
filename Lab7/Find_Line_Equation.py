@@ -1,7 +1,7 @@
 from ExceptionTypes import  OnePointException
-def find_line_equations(x1,y1,x2,y2):
+def find_line_equations(x1,y1,x2,y2):   # lepiej przyjąć dwie krotki
     try:
-        x1=float(x1)
+        x1=float(x1)    # i założyć, że typy już są poprawne
         x2=float(x2)
         y1=float(y1)
         y2=float(y2)
@@ -23,4 +23,4 @@ def find_line_equations(x1,y1,x2,y2):
             C=b
         return A,B,C
     except Exception as e:
-        raise e
+        raise e # po co Pan łapie, skoro zaraz Pan przerzuca?

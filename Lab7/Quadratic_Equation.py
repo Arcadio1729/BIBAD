@@ -6,8 +6,8 @@ def solve_quadratic_equation(a,b,c):
         b=float(b)
         c=float(c)
         delta=b**2-4*a*c
-        if a==float(0):
-            raise NotQuadraticEquation("Cannot create quadratic equation from following coefficients: "+str(a)+","+str(b)+","+str(c)+".")
+        if a==float(0): # wystarczy == 0?
+            raise NotQuadraticEquation("Cannot create quadratic equation from following coefficients: "+str(a)+","+str(b)+","+str(c)+".")   # czy to znaczy, że nie da się rozwiązać?
         elif delta<0:
             raise NonRealException("The quadratic equation does not have any solutions in real numbers.")
         else:
@@ -19,3 +19,4 @@ def solve_quadratic_equation(a,b,c):
             return x1, x2
     except Exception as e:
         raise e
+    # chciałby Pan używać funkcji co raz zwraca floata, a raz krotkę?
