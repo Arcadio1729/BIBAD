@@ -5,7 +5,7 @@ import numpy as np
 
 class Perceptron:
 
-    def __init__(self, learning_rate, X, y, weights, n_iters):
+    def __init__(self, learning_rate, X, y, weights, n_iters):  # dobrze by było dodać wartości domyślne dla wszystkiego oprócz X i y
         self.learning_rate = learning_rate
         self.activation_function = self._Heaviside_step_function
         self.X = np.matrix(X)
@@ -20,7 +20,7 @@ class Perceptron:
             return 0
 
     def predict_y(self, X_vector):
-        return float(self.activation_function(X_vector * self.weights.transpose()))
+        return float(self.activation_function(X_vector * self.weights.transpose())) # przydałby się bias
 
     def _find_weights(self, X_vector, y_difference):
         return self.weights + self.learning_rate * y_difference * X_vector
@@ -34,4 +34,4 @@ class Perceptron:
                 current_difference = current_result - current_prediction
                 self.weights = self._find_weights(current_vector, current_difference)
                 if show_error:
-                    print(current_difference)
+                    print(current_difference)   # błąd się wyświetla per epoka, nie per przykład treningowy

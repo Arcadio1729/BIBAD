@@ -6,7 +6,7 @@ import numpy as np
 
 class CSV_reader:
 
-    def __init__(self, file_path, label_column_nr,delimiter):
+    def __init__(self, file_path, label_column_nr,delimiter):   # warto przyjąć jakieś wartości domyślne
         self.file_path = file_path
         self.working_data = []
         self.delimiter = delimiter
@@ -14,14 +14,14 @@ class CSV_reader:
 
 
 
-    def read_csv(self):
+    def read_csv(self): # czemu konstruktor tego nie robi? trzeba pamiętać, żeby wywołać tę metodę i to dokładnie raz(*); jeśli przekażemy błędne parametry do konstruktora, to dowiadujemy się o tym dopiero po wywołaniu tej metody
         with open(self.file_path) as csvDataFile:
             csvReader = csv.reader(csvDataFile, delimiter=self.delimiter)
             for row in csvReader:
-                self.working_data.append(row)
+                self.working_data.append(row)   # (*) bo przy drugim wywołaniu mamy tu wyjątek
             self.working_data = np.array(self.working_data)
-            self.working_data = self.working_data.astype(np.float)
-        csvDataFile.close()
+            self.working_data = self.working_data.astype(np.float)  # można do konstruktora np.array przekazać dtype
+        csvDataFile.close() # jeśli with, to już bez close
 
     def standardize_data_column(self, column_nr):
         if column_nr!=self.label_column_nr:
@@ -46,3 +46,4 @@ class CSV_reader:
     def get_data(self):
         selector = [col_nr for col_nr in range(self.working_data.shape[1]) if col_nr != self.label_column_nr]
         return self.working_data[:,selector]
+    # a normalizacja wierszy?
