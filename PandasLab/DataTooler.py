@@ -12,7 +12,7 @@ class DataTooler:
 
 
     def remove_nan(self):
-        for column in self.df:
+        for column in self.df:  #dropna
             self.filtered_df = self.df[~self.df[column].isnull()]
 
     def convert_column_to_datetime(self,column_name):
@@ -22,9 +22,9 @@ class DataTooler:
         new_df=self.df[(self.df['DATE_TIME'] <= end_day) & (self.df['DATE_TIME'] >= start_day) & (self.df['SOURCE_KEY'] == source_key)]
         new_df=new_df.set_index('DATE_TIME')
         AC_POWERS=new_df['AC_POWER'].resample('D').max()
-        AC_POWERS.plot()
+        AC_POWERS.plot()    # a gdzie średnia?
 
-    def find_below(self, part_of_average):
+    def find_below(self, part_of_average):  # to chyba nie jest to obliczenie
         generators_mean = {}
         for sk in self.df['SOURCE_KEY'].unique():
             sk_df = self.df[self.df['SOURCE_KEY'] == sk]
