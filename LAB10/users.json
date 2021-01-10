@@ -1,1 +1,1 @@
-{"Mario": {"user_id": "Mario", "user_type": "READER", "borrowed_books": ["HSQV"]}, "admin": {"user_id": "admin", "user_type": "EMPLOYEE", "borrowed_books": []}}
+{"JamesBond": {"user_id": "JamesBond", "user_type": "READER", "borrowed_books": ["HSQV"]}, "admin": {"user_id": "admin", "user_type": "EMPLOYEE", "borrowed_books": []}, "John": {"user_id": "John", "user_type": "READER", "borrowed_books": []}}

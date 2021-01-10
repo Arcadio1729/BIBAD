@@ -37,10 +37,10 @@ class LibraryManager:
     def add_new_user(self, user_id, user_type):
         self.get_users()
         json_user_object={}
-        if not self.user_exists(user_id):
+        if not self._users.keys().__contains__(user_id):
             user_object = {"user_id": user_id, "user_type": user_type, "borrowed_books": []}
-            json_user_object[user_id]=user_object
-            self.__write_data_to_json(self._users_source_path,json_user_object)
+            self._users[user_id]=user_object
+            self.__write_data_to_json(self._users_source_path,self._users)
             return True
         else:
             return False
@@ -54,10 +54,10 @@ class LibraryManager:
     def add_new_book(self, book_id, book_title,book_author,book_year):
         self.get_books()
         json_book_object={}
-        if not self.book_exists(book_id):
+        if not self._books.keys().__contains__(book_id):
             book_object = {"ID": book_id, "Title": book_title, "Author": book_author,"Year":book_year,"Available":True,"Reader":''}
-            json_book_object[book_id]=book_object
-            self.__write_data_to_json(self._books_source_path,json_book_object)
+            self._books[book_id]=book_object
+            self.__write_data_to_json(self._books_source_path,self._books)
             return True
         else:
             return False
@@ -122,6 +122,8 @@ class LibraryManager:
 
         self._waitings.clear()
         self.__write_data_to_json(self._waiting_source_path,self._waitings)
+        self.__write_data_to_json(self._books_source_path,self._books)
+        self.__write_data_to_json(self._users_source_path,self._users)
 
         return True
 
@@ -157,6 +159,7 @@ class LibraryManager:
         return False
 
     def book_exists(self,book_id):
+        self.get_books()
         if bool(self._books):
             return False
         for key in self._books.keys():
