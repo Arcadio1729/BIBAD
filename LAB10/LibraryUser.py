@@ -1,4 +1,4 @@
-import json
+import json # z 4 zaimportowanych rzeczy używa Pan 1
 from abc import ABC
 from Book import Book
 import re
@@ -6,7 +6,7 @@ import re
 class LibraryUser(ABC):
 
     def __init__(self,user_id,user_type,lm):
-        self.lm=lm
+        self.lm=lm  # niejasna nazwa
         self._user_id=user_id
         self._user_type=user_type
 

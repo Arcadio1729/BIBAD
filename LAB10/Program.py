@@ -5,7 +5,7 @@ from Employee import Employee
 def print_list(lst):
     [print(l) for l in lst]
 
-def enter_command(user_type,command_name,lu,parameters):
+def enter_command(user_type,command_name,lu,parameters):    # niejasna nazwa lu
     if lu.get_user_type()=='EMPLOYEE':
         if command_name=='0':
             return False

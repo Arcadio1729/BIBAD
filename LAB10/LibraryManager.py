@@ -37,7 +37,7 @@ class LibraryManager:
     def add_new_user(self, user_id, user_type):
         self.get_users()
         json_user_object={}
-        if not self._users.keys().__contains__(user_id):
+        if not self._users.keys().__contains__(user_id):    # if not user_id in self._users
             user_object = {"user_id": user_id, "user_type": user_type, "borrowed_books": []}
             self._users[user_id]=user_object
             self.__write_data_to_json(self._users_source_path,self._users)
@@ -113,7 +113,7 @@ class LibraryManager:
 
         returned_books=[]
 
-        for k in self._waitings.keys():
+        for k in self._waitings.keys(): # to jest dla mnie niejasne
             self._books[k]["Available"]=True
             current_user=self._books[k]["Reader"]
             self._users[current_user]["borrowed_books"].remove(k)
@@ -143,7 +143,7 @@ class LibraryManager:
 
 
     def return_book(self,book_id,user_id):
-        self.get_users()
+        self.get_users()    # get w nazwie sugeruje, że nas interesuje zwrócona wartość
         self.get_waitings()
         self.get_books()
 
