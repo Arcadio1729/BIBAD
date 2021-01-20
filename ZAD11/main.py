@@ -7,7 +7,7 @@ from random import randint
 import numpy as np
 import math
 
-def print_hi(name):
+def print_hi(name): # do czego ta funkcja?
     # Use a breakpoint in the code line below to debug your script.
     print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
 
@@ -26,7 +26,7 @@ def print_game_map(gun1,gun2,width,height,path):
         print("\n",end='')
 
 
-def find_parabole_equation(p1, p2, vertex):
+def find_parabole_equation(p1, p2, vertex): # nieczytelne nazwy
     A = np.array([[p1[0] ** 2, p1[0], 1], [p2[0] ** 2, p2[0], 1], [vertex[0] ** 2, vertex[0], 1]])
     b = np.array([p1[1], p2[1], vertex[1]])
 
@@ -113,17 +113,17 @@ def shot_bullet(gun,direction,angle,init_velocity,width,path):
 
             if last_y>y:
                 north=False
-            if north==False:
+            if north==False:    # if not north
                 temp_x=gun[0]+x
                 temp_y=gun[1]-y
                 distances.append(get_dist_point_path(path,(temp_x,temp_y)))
 
     if direction.upper()=='LEFT':
-        start_pos=gun[0]
+        start_pos=gun[0]    # DRY
 
         for x in range(0,start_pos):
             last_y=y
-            y=int(x*math.tan(angle)-(g*x**2)/(2*(init_velocity**2)*(math.cos(angle))**2))
+            y=int(x*math.tan(angle)-(g*x**2)/(2*(init_velocity**2)*(math.cos(angle))**2))   # ZeroDivisionError
 
             if last_y>y:
                 north=False
@@ -143,8 +143,8 @@ def get_minimum_distance(distances):
             min_point=d[1]
     return min_dist,min_point
 
-if __name__ == '__main__':
-    h=30
+if __name__ == '__main__':  # lepiej zawartość tego if'a przenieść do funkcji main
+    h=30    # sugeruję pełnym słowem
     w=30
     path,g=generate_path(w,h,h/2)
 
@@ -177,7 +177,7 @@ if __name__ == '__main__':
                     print("GUN1 has won!!!")
                     running_game=False
         else:
-            print("Velocity: ")
+            print("Velocity: ") # DRY
             v = float(input())
             print("Angle (radians)")
             a = float(input())
