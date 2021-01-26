@@ -1,5 +1,5 @@
 class Graph:
-    GraphDict = {}
+    GraphDict = {}  # to są pola klasowe - po co?
     VisitedDFS = None
     VisitedBFS = None
     QueueBFS = None
@@ -7,7 +7,7 @@ class Graph:
     def __init__(self, graph_dict=None):
         if graph_dict == None:
             graph_dict = {}
-        self.GraphDict = graph_dict
+        self.GraphDict = graph_dict # raczej snake_case
         self.VisitedDFS = []
         self.VisitedBFS = []
         self.QueueBFS = []
@@ -68,7 +68,7 @@ class Graph:
 
         return edges
 
-    def DFS(self, v):
+    def DFS(self, v):   # z tej metody nic nie wynika - mogę uruchomić, ale nie pozwala mi przeiterować po wierzchołkach, żeby np. je wypisać
         if v not in self.VisitedDFS:
             self.VisitedDFS.append(v)
             for n in self.GraphDict[v]:

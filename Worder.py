@@ -18,7 +18,7 @@ class Worder:
 
     def getTextFromFile(self, path):
         file = open(path)
-        self.WorkingText = file.read()
+        self.WorkingText = file.read()  # ideą generatorów jest to, żeby nie wczytywać całego pliku
         file.close()
 
 
